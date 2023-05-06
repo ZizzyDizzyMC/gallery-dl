@@ -101,6 +101,10 @@ class Job():
             self.status |= exc.code
         except (exception.TerminateExtraction, exception.RestartExtraction):
             raise
+        except exception.HttpError as exc:
+            log.error("%s: %s", exc.__class__.__name__, exc)
+            self.http_error_response = exc.response
+            self.status |= exc.code
         except exception.GalleryDLException as exc:
             log.error("%s: %s", exc.__class__.__name__, exc)
             self.status |= exc.code
