@@ -733,7 +733,7 @@ class RequestsAdapter(HTTPAdapter):
     def init_poolmanager(self, *args, **kwargs):
         kwargs["ssl_context"] = self.ssl_context
         kwargs["source_address"] = self.source_address
-        return HTTPAdapter.init_poolmanager(self, *args, **kwargs)
+        return HTTPAdapter.init_poolmanager(self, 100, 100, **kwargs)
 
     def proxy_manager_for(self, *args, **kwargs):
         kwargs["ssl_context"] = self.ssl_context
