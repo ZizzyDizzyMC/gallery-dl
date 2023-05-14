@@ -29,6 +29,7 @@ class Job():
 
         self.extractor = extr
         self.pathfmt = None
+        self.http_error_response = None
         self.kwdict = {}
         self.status = 0
 
